@@ -1,8 +1,7 @@
-import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
+import {  withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { useUser } from "@auth0/nextjs-auth0/client"
-import { GetServerSideProps } from "next";
 
-export function Home(){
+export default function User(){
     const { user } = useUser()
     return (
         <>
@@ -15,4 +14,6 @@ export function Home(){
 }
 
 
-export const getServerSideProps = withPageAuthRequired();
+export const getServerSideProps = withPageAuthRequired({
+    returnTo: '/'
+});
